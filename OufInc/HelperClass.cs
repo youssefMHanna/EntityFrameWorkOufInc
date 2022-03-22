@@ -52,24 +52,21 @@ namespace OufInc
             {
                 int n = item.Number;
 
-                invoice_Items.Where(a => a.Code == item.Code).ToList().ForEach( a=>
+                invoice_Items.Where(a => a.Code == item.Code).OrderBy(a=>a.Production_Date).ToList().ForEach( a=>
                 {
-                    if (a.Code == item.Code)
+                    if (a.Number > n)
                     {
-                        if (a.Number > n)
-                        {
-                            a.Number-=n;
-                            n=0;
-                        }
-                        else
-                        {
-                            n-=a.Number;
-                            invoice_Items.Remove(a);
-                        }
+                        a.Number-=n;
+                        n=0;
+                    }
+                    else
+                    {
+                        n-=a.Number;
+                        invoice_Items.Remove(a);
                     }
                 }) ;
 
-                if (n >= 0)
+                if (n > 0)
                     return false;
             }
             

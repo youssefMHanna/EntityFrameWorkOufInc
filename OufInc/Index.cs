@@ -15,6 +15,13 @@ namespace OufInc
         public Index()
         {
             InitializeComponent();
+            EF_ADO localDB = new EF_ADO();
+            List<Invoice_transfer_Items> invoice_Transfer_Items = new List<Invoice_transfer_Items>();
+            invoice_Transfer_Items.AddItems( localDB.Invoices.Where(a=>!a.In_Out).SelectMany(a=>a.Invoice_Items).ToList().Select(a => (Invoice_transfer_Items)a).ToList() );
+            var invoice_Transfer_Items1 = localDB.Invoices.Where(a=>a.In_Out).SelectMany(a=>a.Invoice_Items).ToList().Select(a => (Invoice_transfer_Items)a).ToList();
+           
+            MessageBox.Show( $"{invoice_Transfer_Items.SubtractItems(invoice_Transfer_Items1).ToString()}" ) ;
+            invoice_Transfer_Items.ForEach(a => MessageBox.Show($" {a.Code} , {a.Number} "));
         }
 
         private void TraderButton_Click(object sender, EventArgs e)
