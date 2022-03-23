@@ -13,8 +13,8 @@ namespace OufInc
         public Warehouse()
         {
             Invoices = new HashSet<Invoice>();
-            Transfers = new HashSet<Transfer>();
-            Transfers1 = new HashSet<Transfer>();
+            ToTransfers = new HashSet<Transfer>();
+            FromTransfers = new HashSet<Transfer>();
         }
 
         [Required]
@@ -36,9 +36,9 @@ namespace OufInc
         public virtual ICollection<Invoice> Invoices { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transfer> Transfers { get; set; }
+        public virtual ICollection<Transfer> ToTransfers { get; set; }//to
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transfer> Transfers1 { get; set; }
+        public virtual ICollection<Transfer> FromTransfers { get; set; } //from
     }
 }

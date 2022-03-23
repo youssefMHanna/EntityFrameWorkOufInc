@@ -109,14 +109,14 @@ namespace OufInc
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Warehouse>()
-                .HasMany(e => e.Transfers)
-                .WithRequired(e => e.Warehouse)
+                .HasMany(e => e.ToTransfers)
+                .WithRequired(e => e.ToWarehouse)
                 .HasForeignKey(e => e.ToWarehouse_ID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Warehouse>()
-                .HasMany(e => e.Transfers1)
-                .WithRequired(e => e.Warehouse1)
+                .HasMany(e => e.FromTransfers)
+                .WithRequired(e => e.FromWarehouse)
                 .HasForeignKey(e => e.FromWarehouse_ID)
                 .WillCascadeOnDelete(false);
         }

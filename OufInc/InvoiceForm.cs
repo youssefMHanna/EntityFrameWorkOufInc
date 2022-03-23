@@ -98,9 +98,21 @@ namespace OufInc
                 invoice.Invoice_Items.Add(invoice_Items);
             }
             localDB.Invoices.Add(invoice);
-            localDB.trySaveChanges();
-            updateSelector();
-            InvoiceSelector.SelectedItem = invoice.Invoice_ID.ToString();
+
+            bool acceptableChange;
+            invoice = localDB.Invoices.Find(int.Parse(InvoiceSelector.SelectedItem.ToString()));
+            invoice.Warehouse.WarehouseReport(out acceptableChange);
+            if(acceptableChange)
+            {
+                localDB.trySaveChanges();
+                updateSelector();
+                InvoiceSelector.SelectedItem = invoice.Invoice_ID.ToString();
+            }
+            else
+            {
+                localDB = new EF_ADO();
+                MessageBox.Show("Unacceptable Change");
+            }
         }
         private void AddButton_Click(object sender, EventArgs e)
         {
@@ -127,8 +139,17 @@ namespace OufInc
                 }
                 invoice.Invoice_Items.Add(invoice_Items);
             }
-
-            localDB.trySaveChanges();
+            bool acceptableChange;
+            invoice.Warehouse.WarehouseReport(out acceptableChange);
+            if (acceptableChange)
+            {
+                localDB.trySaveChanges();
+            }
+            else
+            {
+                localDB = new EF_ADO();
+                MessageBox.Show("Unacceptable Change");
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

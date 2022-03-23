@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="Goods_Goods_Dimensions.cs" />
     <Compile Include="HelperClass.cs" />
+    <Compile Include="IInvoice_Transfer.cs" />
     <Compile Include="Index.cs">
       <SubType>Form</SubType>
     </Compile>

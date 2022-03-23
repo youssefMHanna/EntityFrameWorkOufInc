@@ -87,9 +87,22 @@ namespace OufInc
                 transfer.Transefer_Items.Add(transferItems);
             }
             localDB.Transfers.Add(transfer);
-            localDB.trySaveChanges();
-            updateSelector();
-            TransferSelector.SelectedItem = transfer.Transfer_ID.ToString();
+            transfer = localDB.Transfers.Find(int.Parse(TransferSelector.SelectedItem.ToString()));
+
+            bool acceptableChange;
+
+            transfer.FromWarehouse.WarehouseReport(out acceptableChange);
+            if (acceptableChange)
+            {
+                localDB.trySaveChanges();
+                updateSelector();
+                TransferSelector.SelectedItem = transfer.Transfer_ID.ToString();
+            }
+            else
+            {
+                localDB = new EF_ADO();
+                MessageBox.Show("Unacceptable Change");
+            }
         }
         private void AddButton_Click(object sender, EventArgs e)
         {
@@ -112,7 +125,18 @@ namespace OufInc
                 transferItems.Valid_Date = DateTime.Parse(row["Valid_Date"].ToString());
                 transfer.Transefer_Items.Add(transferItems);
             }
-            localDB.trySaveChanges();
+            bool acceptableChange;
+
+            transfer.FromWarehouse.WarehouseReport(out acceptableChange);
+            if (acceptableChange)
+            {
+                localDB.trySaveChanges();
+            }
+            else
+            {
+                localDB = new EF_ADO();
+                MessageBox.Show("Unacceptable Change");
+            }
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

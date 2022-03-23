@@ -7,7 +7,7 @@ namespace OufInc
     using System.Data.Entity.Spatial;
 
     [Table("Invoice")]
-    public partial class Invoice
+    public partial class Invoice:IInvoice_Transfer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Invoice()
