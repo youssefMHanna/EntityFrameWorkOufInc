@@ -60,16 +60,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EFProjectDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EFProjectDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="EFProjectDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EFProjectDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="EF_ADO.cs" />
     <Compile Include="Good.cs" />
     <Compile Include="GoodsForm.cs">
@@ -177,28 +167,6 @@
     <EmbeddedResource Include="WarehouseReportForm.resx">
       <DependentUpon>WarehouseReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="EFProjectDataSet.xsc">
-      <DependentUpon>EFProjectDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="EFProjectDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>EFProjectDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="EFProjectDataSet.xss">
-      <DependentUpon>EFProjectDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="EFProjectDataSet1.xsc">
-      <DependentUpon>EFProjectDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="EFProjectDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>EFProjectDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="EFProjectDataSet1.xss">
-      <DependentUpon>EFProjectDataSet1.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

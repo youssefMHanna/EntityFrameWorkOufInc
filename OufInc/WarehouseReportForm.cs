@@ -15,7 +15,6 @@ namespace OufInc
         EF_ADO localDB;
         ItemWVal[] WarehouseSelectorItems;
         DataTable dataTable;
-        Warehouse warehouse;
         public WarehouseReportForm()
         {
             InitializeComponent();
