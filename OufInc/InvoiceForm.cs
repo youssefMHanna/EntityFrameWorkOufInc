@@ -100,8 +100,7 @@ namespace OufInc
             localDB.Invoices.Add(invoice);
 
             bool acceptableChange;
-            invoice = localDB.Invoices.Find(int.Parse(InvoiceSelector.SelectedItem.ToString()));
-            invoice.Warehouse.WarehouseReport(out acceptableChange);
+            localDB.Warehouses.Find(invoice.Warehouse_ID).WarehouseReport(out acceptableChange);
             if(acceptableChange)
             {
                 localDB.trySaveChanges();
@@ -140,7 +139,7 @@ namespace OufInc
                 invoice.Invoice_Items.Add(invoice_Items);
             }
             bool acceptableChange;
-            invoice.Warehouse.WarehouseReport(out acceptableChange);
+            localDB.Warehouses.Find(invoice.Warehouse_ID).WarehouseReport(out acceptableChange);
             if (acceptableChange)
             {
                 localDB.trySaveChanges();

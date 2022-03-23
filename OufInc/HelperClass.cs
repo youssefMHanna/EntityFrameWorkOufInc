@@ -38,7 +38,14 @@ namespace OufInc
             {
                 if (!invoice_Items.Contains(item, new ItemEqualityDateComparator()))
                 {
-                    invoice_Items.Add(item);
+                    Invoice_transfer_Items _temp = new Invoice_Items() 
+                    { 
+                        Code = item.Code ,
+                        Number = item.Number , 
+                        Production_Date = item.Production_Date , 
+                        Valid_Date = item.Valid_Date 
+                    };
+                    invoice_Items.Add(_temp);
                 }
                 else
                 {
@@ -87,31 +94,30 @@ namespace OufInc
             List<Invoice_transfer_Items> _Items = new List<Invoice_transfer_Items>();
             _Items.AddItems(warehouse.Invoices.Where(a => !a.In_Out  && a.Invoice_Date <= date).SelectMany(a => a.Invoice_Items).ToList().Select(a => (Invoice_transfer_Items)a).ToList());
             _Items.SubtractItems(warehouse.Invoices.Where(a => a.In_Out && a.Invoice_Date <= date).SelectMany(a => a.Invoice_Items).ToList().Select(a => (Invoice_transfer_Items)a).ToList());
-            _Items.AddItems(warehouse.ToTransfers.SelectMany(a => a.Transefer_Items).ToList().Select(a => (Invoice_transfer_Items)a).ToList());
-            _Items.SubtractItems(warehouse.FromTransfers.SelectMany(a => a.Transefer_Items).ToList().Select(a => (Invoice_transfer_Items)a).ToList());
+            _Items.AddItems(warehouse.ToTransfers.Where(a => a.Transfer_Date <= date ).SelectMany(a => a.Transefer_Items ).ToList().Select(a => (Invoice_transfer_Items)a).ToList());
+            _Items.SubtractItems(warehouse.FromTransfers.Where(a => a.Transfer_Date <= date).SelectMany(a => a.Transefer_Items).ToList().Select(a => (Invoice_transfer_Items)a).ToList());
             return _Items;
         }
         public static List<(IInvoice_Transfer, int, DateTime?, DateTime?)> ItemUpToDateReport(this Good good, DateTime date)
         {
             List<(IInvoice_Transfer, int, DateTime?, DateTime?)> ls = new List<(IInvoice_Transfer, int, DateTime?, DateTime?)>();
-            ls.AddRange(good.Invoice_Items.Select(a => ((IInvoice_Transfer)a.Invoice, a.Number, a.Production_Date, a.Valid_Date)).ToList());
-            ls.AddRange(good.Transefer_Items.Select(a => ((IInvoice_Transfer)a.Transfer, a.Number, a.Production_Date, a.Valid_Date)).ToList());
+            ls.AddRange(good.Invoice_Items.Where(a=>a.Invoice.Invoice_Date <= date).Select(a => ((IInvoice_Transfer)a.Invoice, a.Number, a.Production_Date, a.Valid_Date)).ToList());
+            ls.AddRange(good.Transefer_Items.Where(a => a.Transfer.Transfer_Date <= date).Select(a => ((IInvoice_Transfer)a.Transfer, a.Number, a.Production_Date, a.Valid_Date)).ToList());
             return ls;
         }
         public static List<IInvoice_Transfer> WarehousePermitsUpToDateReport(this Warehouse warehouse, DateTime date)
         {
             List<IInvoice_Transfer> ls = new List<IInvoice_Transfer>();
-            ls.AddRange(warehouse.Invoices.ToList());
-            ls.AddRange(warehouse.FromTransfers.ToList());
-            ls.AddRange(warehouse.ToTransfers.ToList());
+            ls.AddRange(warehouse.Invoices.Where(a=>a.Invoice_Date<=date).ToList());
+            ls.AddRange(warehouse.FromTransfers.Where(a=>a.Transfer_Date<=date).ToList());
+            ls.AddRange(warehouse.ToTransfers.Where(a => a.Transfer_Date <= date).ToList());
             return ls;
         }
         public static List<Invoice_transfer_Items> WarehouseDatedItemsReport(this Warehouse warehouse, DateTime date)
         {
-
-            List<Invoice_transfer_Items> _Items = new List<Invoice_transfer_Items>();
-            _Items = warehouse.WarehouseReport();
-            //_Items.Select(a => a.Date > date);
+            var _Items = warehouse.WarehouseUpToDateReport(date);
+            _Items.SubtractItems(warehouse.Invoices.Where(a => a.In_Out && a.Invoice_Date > date).SelectMany(a => a.Invoice_Items).ToList().Select(a => (Invoice_transfer_Items)a).ToList());
+            _Items.SubtractItems(warehouse.FromTransfers.Where(a => a.Transfer_Date > date).SelectMany(a => a.Transefer_Items).ToList().Select(a => (Invoice_transfer_Items)a).ToList());
             return _Items;
         }
         public static List<Invoice_transfer_Items> WarehouseAboutToExpireItemsReport(this Warehouse warehouse, DateTime date)

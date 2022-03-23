@@ -34,6 +34,7 @@
             this.InPermitButton = new System.Windows.Forms.Button();
             this.OutPermitButton = new System.Windows.Forms.Button();
             this.TransferPermitButton = new System.Windows.Forms.Button();
+            this.WarehouseReport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TraderButton
@@ -102,12 +103,24 @@
             this.TransferPermitButton.UseVisualStyleBackColor = true;
             this.TransferPermitButton.Click += new System.EventHandler(this.TransferPermitButton_Click);
             // 
+            // WarehouseReport
+            // 
+            this.WarehouseReport.Location = new System.Drawing.Point(140, 63);
+            this.WarehouseReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.WarehouseReport.Name = "WarehouseReport";
+            this.WarehouseReport.Size = new System.Drawing.Size(112, 35);
+            this.WarehouseReport.TabIndex = 6;
+            this.WarehouseReport.Text = "Report";
+            this.WarehouseReport.UseVisualStyleBackColor = true;
+            this.WarehouseReport.Click += new System.EventHandler(this.WarehouseReport_Click);
+            // 
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.Controls.Add(this.WarehouseReport);
             this.Controls.Add(this.TransferPermitButton);
             this.Controls.Add(this.OutPermitButton);
             this.Controls.Add(this.InPermitButton);
@@ -129,6 +142,7 @@
         private System.Windows.Forms.Button InPermitButton;
         private System.Windows.Forms.Button OutPermitButton;
         private System.Windows.Forms.Button TransferPermitButton;
+        private System.Windows.Forms.Button WarehouseReport;
     }
 }
 

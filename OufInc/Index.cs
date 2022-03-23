@@ -52,5 +52,11 @@ namespace OufInc
             TransferForm transferForm = new TransferForm();
             transferForm.ShowDialog();
         }
+
+        private void WarehouseReport_Click(object sender, EventArgs e)
+        {
+            WarehouseReportForm warehouseReportForm = new WarehouseReportForm();
+            warehouseReportForm.ShowDialog();
+        }
     }
 }

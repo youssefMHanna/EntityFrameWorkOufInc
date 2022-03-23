@@ -55,6 +55,7 @@ namespace OufInc
             WarehouseFromSelector.SelectedItem = WarehouseSelectorItems.Where(a => a.Value == transfer.FromWarehouse_ID).First();
             WarehouseToSelector.SelectedItem = WarehouseSelectorItems.Where(a => a.Value == transfer.ToWarehouse_ID).First();
             TraderSelector.SelectedItem = TraderSelectorItems.Where(a => a.Value == transfer.Trader_ID).First();
+            dateTimePicker1.Value = transfer.Transfer_Date;
             dataTable.Rows.Clear();
             foreach (var tuple in transfer.Transefer_Items)
             {
@@ -76,6 +77,7 @@ namespace OufInc
             transfer.Trader_ID = ((ItemWVal)(TraderSelector.SelectedItem)).Value;
             transfer.FromWarehouse_ID = ((ItemWVal)(WarehouseFromSelector.SelectedItem)).Value;
             transfer.ToWarehouse_ID = ((ItemWVal)(WarehouseToSelector.SelectedItem)).Value;
+            transfer.Transfer_Date = dateTimePicker1.Value;
             foreach (DataRow row in dataTable.Rows)
             {
                 Transefer_Items transferItems = new Transefer_Items();
@@ -87,11 +89,10 @@ namespace OufInc
                 transfer.Transefer_Items.Add(transferItems);
             }
             localDB.Transfers.Add(transfer);
-            transfer = localDB.Transfers.Find(int.Parse(TransferSelector.SelectedItem.ToString()));
 
+            
             bool acceptableChange;
-
-            transfer.FromWarehouse.WarehouseReport(out acceptableChange);
+            localDB.Warehouses.Find(transfer.FromWarehouse_ID ).WarehouseReport(out acceptableChange);
             if (acceptableChange)
             {
                 localDB.trySaveChanges();
@@ -115,6 +116,7 @@ namespace OufInc
             transfer.Trader_ID = ((ItemWVal)(TraderSelector.SelectedItem)).Value;
             transfer.FromWarehouse_ID = ((ItemWVal)(WarehouseFromSelector.SelectedItem)).Value;
             transfer.ToWarehouse_ID = ((ItemWVal)(WarehouseToSelector.SelectedItem)).Value;
+            transfer.Transfer_Date = dateTimePicker1.Value;
             foreach (DataRow row in dataTable.Rows)
             {
                 Transefer_Items transferItems = new Transefer_Items();
@@ -126,8 +128,7 @@ namespace OufInc
                 transfer.Transefer_Items.Add(transferItems);
             }
             bool acceptableChange;
-
-            transfer.FromWarehouse.WarehouseReport(out acceptableChange);
+            localDB.Warehouses.Find(transfer.FromWarehouse_ID).WarehouseReport(out acceptableChange);
             if (acceptableChange)
             {
                 localDB.trySaveChanges();
@@ -187,5 +188,6 @@ namespace OufInc
             else
                 return;
         }
+
     }
 }

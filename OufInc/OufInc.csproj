@@ -135,6 +135,12 @@
     <Compile Include="WarehouseForm.Designer.cs">
       <DependentUpon>WarehouseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WarehouseReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WarehouseReportForm.Designer.cs">
+      <DependentUpon>WarehouseReportForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GoodsForm.resx">
       <DependentUpon>GoodsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WarehouseForm.resx">
       <DependentUpon>WarehouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WarehouseReportForm.resx">
+      <DependentUpon>WarehouseReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="EFProjectDataSet.xsc">
       <DependentUpon>EFProjectDataSet.xsd</DependentUpon>

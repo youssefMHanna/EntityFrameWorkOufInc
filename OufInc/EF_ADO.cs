@@ -91,6 +91,7 @@ namespace OufInc
                 .WithRequired(e => e.Transfer)
                 .WillCascadeOnDelete(false);
 
+
             modelBuilder.Entity<Warehouse>()
                 .Property(e => e.Warehouse_Address)
                 .IsUnicode(false);
