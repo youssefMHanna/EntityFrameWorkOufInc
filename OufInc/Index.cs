@@ -58,5 +58,23 @@ namespace OufInc
             WarehouseReportForm warehouseReportForm = new WarehouseReportForm();
             warehouseReportForm.ShowDialog();
         }
+
+        private void ItemsReport_Click(object sender, EventArgs e)
+        {
+            ItemMovementReportForm itemReportForm = new ItemMovementReportForm();
+            itemReportForm.ShowDialog();
+        }
+
+        private void AboutToExpireItemsReport_Click(object sender, EventArgs e)
+        {
+            AboutToExpireForm aboutToExpireForm = new AboutToExpireForm();
+            aboutToExpireForm.ShowDialog();
+        }
+
+        private void DatedItemsReport_Click(object sender, EventArgs e)
+        {
+            DatedItemsForm datedItemsForm = new DatedItemsForm();
+            datedItemsForm.ShowDialog();
+        }
     }
 }

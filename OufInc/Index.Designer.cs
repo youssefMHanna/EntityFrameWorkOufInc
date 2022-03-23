@@ -35,6 +35,9 @@
             this.OutPermitButton = new System.Windows.Forms.Button();
             this.TransferPermitButton = new System.Windows.Forms.Button();
             this.WarehouseReport = new System.Windows.Forms.Button();
+            this.ItemsReport = new System.Windows.Forms.Button();
+            this.DatedItemsReport = new System.Windows.Forms.Button();
+            this.AboutToExpireItemsReport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TraderButton
@@ -83,10 +86,10 @@
             // 
             // OutPermitButton
             // 
-            this.OutPermitButton.Location = new System.Drawing.Point(510, 18);
+            this.OutPermitButton.Location = new System.Drawing.Point(507, 18);
             this.OutPermitButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.OutPermitButton.Name = "OutPermitButton";
-            this.OutPermitButton.Size = new System.Drawing.Size(120, 35);
+            this.OutPermitButton.Size = new System.Drawing.Size(117, 35);
             this.OutPermitButton.TabIndex = 4;
             this.OutPermitButton.Text = "Export Permit";
             this.OutPermitButton.UseVisualStyleBackColor = true;
@@ -94,10 +97,10 @@
             // 
             // TransferPermitButton
             // 
-            this.TransferPermitButton.Location = new System.Drawing.Point(639, 18);
+            this.TransferPermitButton.Location = new System.Drawing.Point(632, 18);
             this.TransferPermitButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TransferPermitButton.Name = "TransferPermitButton";
-            this.TransferPermitButton.Size = new System.Drawing.Size(130, 35);
+            this.TransferPermitButton.Size = new System.Drawing.Size(117, 35);
             this.TransferPermitButton.TabIndex = 5;
             this.TransferPermitButton.Text = "Transfer Permit";
             this.TransferPermitButton.UseVisualStyleBackColor = true;
@@ -105,21 +108,57 @@
             // 
             // WarehouseReport
             // 
-            this.WarehouseReport.Location = new System.Drawing.Point(140, 63);
+            this.WarehouseReport.Location = new System.Drawing.Point(18, 63);
             this.WarehouseReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.WarehouseReport.Name = "WarehouseReport";
-            this.WarehouseReport.Size = new System.Drawing.Size(112, 35);
+            this.WarehouseReport.Size = new System.Drawing.Size(234, 86);
             this.WarehouseReport.TabIndex = 6;
-            this.WarehouseReport.Text = "Report";
+            this.WarehouseReport.Text = "Warehouse Items Report";
             this.WarehouseReport.UseVisualStyleBackColor = true;
             this.WarehouseReport.Click += new System.EventHandler(this.WarehouseReport_Click);
+            // 
+            // ItemsReport
+            // 
+            this.ItemsReport.Location = new System.Drawing.Point(260, 63);
+            this.ItemsReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ItemsReport.Name = "ItemsReport";
+            this.ItemsReport.Size = new System.Drawing.Size(238, 86);
+            this.ItemsReport.TabIndex = 7;
+            this.ItemsReport.Text = "Item Movemet Report";
+            this.ItemsReport.UseVisualStyleBackColor = true;
+            this.ItemsReport.Click += new System.EventHandler(this.ItemsReport_Click);
+            // 
+            // DatedItemsReport
+            // 
+            this.DatedItemsReport.Location = new System.Drawing.Point(510, 63);
+            this.DatedItemsReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DatedItemsReport.Name = "DatedItemsReport";
+            this.DatedItemsReport.Size = new System.Drawing.Size(239, 86);
+            this.DatedItemsReport.TabIndex = 8;
+            this.DatedItemsReport.Text = "Dated Items Report";
+            this.DatedItemsReport.UseVisualStyleBackColor = true;
+            this.DatedItemsReport.Click += new System.EventHandler(this.DatedItemsReport_Click);
+            // 
+            // AboutToExpireItemsReport
+            // 
+            this.AboutToExpireItemsReport.Location = new System.Drawing.Point(140, 159);
+            this.AboutToExpireItemsReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.AboutToExpireItemsReport.Name = "AboutToExpireItemsReport";
+            this.AboutToExpireItemsReport.Size = new System.Drawing.Size(484, 86);
+            this.AboutToExpireItemsReport.TabIndex = 9;
+            this.AboutToExpireItemsReport.Text = "about to expire Items Report";
+            this.AboutToExpireItemsReport.UseVisualStyleBackColor = true;
+            this.AboutToExpireItemsReport.Click += new System.EventHandler(this.AboutToExpireItemsReport_Click);
             // 
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.ClientSize = new System.Drawing.Size(793, 271);
+            this.Controls.Add(this.AboutToExpireItemsReport);
+            this.Controls.Add(this.DatedItemsReport);
+            this.Controls.Add(this.ItemsReport);
             this.Controls.Add(this.WarehouseReport);
             this.Controls.Add(this.TransferPermitButton);
             this.Controls.Add(this.OutPermitButton);
@@ -143,6 +182,9 @@
         private System.Windows.Forms.Button OutPermitButton;
         private System.Windows.Forms.Button TransferPermitButton;
         private System.Windows.Forms.Button WarehouseReport;
+        private System.Windows.Forms.Button ItemsReport;
+        private System.Windows.Forms.Button DatedItemsReport;
+        private System.Windows.Forms.Button AboutToExpireItemsReport;
     }
 }
 

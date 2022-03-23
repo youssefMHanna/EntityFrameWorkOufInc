@@ -117,6 +117,7 @@ namespace OufInc
             transfer.FromWarehouse_ID = ((ItemWVal)(WarehouseFromSelector.SelectedItem)).Value;
             transfer.ToWarehouse_ID = ((ItemWVal)(WarehouseToSelector.SelectedItem)).Value;
             transfer.Transfer_Date = dateTimePicker1.Value;
+            transfer.Transefer_Items.Clear();
             foreach (DataRow row in dataTable.Rows)
             {
                 Transefer_Items transferItems = new Transefer_Items();

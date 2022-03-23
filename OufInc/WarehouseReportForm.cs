@@ -41,20 +41,33 @@ namespace OufInc
 
         private void WarehouseSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var warehouseI = localDB.Warehouses.Find(((ItemWVal)WarehouseSelector.SelectedItem).Value).WarehouseReport();
-            localDB = new EF_ADO();
-            dataTable.Rows.Clear();
-            foreach (var tuple in warehouseI)
+            updateView();
+        }
+
+        private void updateView()
+        {
+            if(WarehouseSelector.SelectedItem != null)
             {
-                DataRow drToAdd = dataTable.NewRow();
-                drToAdd["Code"] = tuple.Code;
-                drToAdd["Number"] = tuple.Number;
-                drToAdd["Production_Date"] = tuple.Production_Date;
-                drToAdd["Valid_Date"] = tuple.Valid_Date;
-                dataTable.Rows.Add(drToAdd);
+                var warehouseI = localDB.Warehouses.Find(((ItemWVal)WarehouseSelector.SelectedItem).Value).WarehouseReport(dateTimePicker1.Value);
+                localDB = new EF_ADO();
+                dataTable.Rows.Clear();
+                foreach (var tuple in warehouseI)
+                {
+                    DataRow drToAdd = dataTable.NewRow();
+                    drToAdd["Code"] = tuple.Code;
+                    drToAdd["Number"] = tuple.Number;
+                    drToAdd["Production_Date"] = tuple.Production_Date;
+                    drToAdd["Valid_Date"] = tuple.Valid_Date;
+                    dataTable.Rows.Add(drToAdd);
+                }
+                dataTable.AcceptChanges();
+                dataGridView1.DataSource = dataTable;
             }
-            dataTable.AcceptChanges();
-            dataGridView1.DataSource = dataTable;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            updateView();
         }
     }
 }

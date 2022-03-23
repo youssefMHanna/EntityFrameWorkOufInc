@@ -60,6 +60,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutToExpireForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutToExpireForm.Designer.cs">
+      <DependentUpon>AboutToExpireForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="datedItemsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="datedItemsForm.Designer.cs">
+      <DependentUpon>datedItemsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EF_ADO.cs" />
     <Compile Include="Good.cs" />
     <Compile Include="GoodsForm.cs">
@@ -92,6 +104,12 @@
     </Compile>
     <Compile Include="ItemPicker.Designer.cs">
       <DependentUpon>ItemPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemReportForm.Designer.cs">
+      <DependentUpon>ItemReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemWVal.cs" />
     <Compile Include="Program.cs" />
@@ -131,6 +149,12 @@
     <Compile Include="WarehouseReportForm.Designer.cs">
       <DependentUpon>WarehouseReportForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AboutToExpireForm.resx">
+      <DependentUpon>AboutToExpireForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="datedItemsForm.resx">
+      <DependentUpon>datedItemsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GoodsForm.resx">
       <DependentUpon>GoodsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ItemPicker.resx">
       <DependentUpon>ItemPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemReportForm.resx">
+      <DependentUpon>ItemReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
